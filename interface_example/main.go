@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type shape interface {
 	getArea() (string, float64)
 }
@@ -16,13 +18,13 @@ type triangle struct {
 func main() {
 	sq := square{
 		name: "square",
-		edge: 5.0,
+		edge: 10,
 	}
 
 	tr := triangle{
 		name:   "triangle",
-		base:   5.0,
-		height: 9.0,
+		base:   10,
+		height: 10,
 	}
 
 	printArea(sq)
@@ -33,7 +35,7 @@ func main() {
 func printArea(s shape) {
 
 	shape_name, area := s.getArea()
-	println("The area of the", shape_name, "is", area)
+	fmt.Println("The area of the", shape_name, "is", area)
 
 }
 
@@ -42,5 +44,5 @@ func (s square) getArea() (string, float64) {
 }
 
 func (t triangle) getArea() (string, float64) {
-	return t.name, (t.base * t.height) / 2
+	return t.name, (t.base * t.height) * 0.5
 }
