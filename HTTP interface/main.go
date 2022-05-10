@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 )
@@ -12,5 +13,9 @@ func main() {
 		fmt.Println("Error:", err)
 		os.Exit(1)
 	}
-	fmt.Println(resp.Body)
+
+	io.Copy(os.Stdout, resp.Body)
+	// bs := make([]byte, 99999)
+	// resp.Body.Read(bs)
+	// fmt.Println(string(bs))
 }
